@@ -20,6 +20,16 @@
 			"src": "src/img/image.jpeg",
 			"type": "auto",
 			"sizes": "auto"
+		},
+		{
+			"src": "src/img/image.png",
+			"type": "image/png",
+			"sizes": "192x192"
+		},
+		{
+			"src": "src/img/bruh.jpeg",
+			"type": "image/jpeg",
+			"sizes": "192x192"
 		}
 	]
 }
