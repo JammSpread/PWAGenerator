@@ -8,18 +8,13 @@
 	"icons": [
 		{
 			"src": "src/img/image.png",
-			"type": "auto",
+			"type": "png",
 			"sizes": "192x192"
 		},
 		{
-			"src": "src/img/image.png",
-			"type": "image/png",
-			"sizes": "192x192"
-		},
-		{
-			"src": "src/img/image.png",
-			"type": "image/png",
-			"sizes": "192x192"
+			"src": "Hello",
+			"type": "my friends",
+			"sizes": "256x256"
 		}
 	]
 }
