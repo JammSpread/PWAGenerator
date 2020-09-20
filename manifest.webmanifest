@@ -8,18 +8,8 @@
 	"icons": [
 		{
 			"src": "src/img/image.png",
-			"type": "png",
-			"sizes": "192x192"
-		},
-		{
-			"src": "Hello",
-			"type": "my friends",
-			"sizes": "256x256"
-		},
-		{
-			"src": "src/img/image.jpeg",
 			"type": "auto",
-			"sizes": "auto"
+			"sizes": "192x192"
 		},
 		{
 			"src": "src/img/image.png",
@@ -27,8 +17,8 @@
 			"sizes": "192x192"
 		},
 		{
-			"src": "src/img/bruh.jpeg",
-			"type": "image/jpeg",
+			"src": "src/img/image.png",
+			"type": "image/png",
 			"sizes": "192x192"
 		}
 	]
