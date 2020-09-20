@@ -1,11 +1,10 @@
 const colors = require('colors/safe');
 const fs = require('fs');
-const mime = require('mime-types');
 const manifestJS = require('./manifest.js');
 const dir = process.cwd();
 const fields = [
     new manifestJS.field("src", "src (Source path to image, default: src/img/image.png)", "src/img/image.png"),
-    new manifestJS.field("type", "type (Type of icon file, either mime-type or auto for detection based on the path, default: auto)", "auto"),
+    new manifestJS.field("type", "type (Type of icon file, either mime or some extensions, default: png)", "png"),
     new manifestJS.field("sizes", "sizes (Size of icon, recommended: 192x192, default: 192x192)", "192x192")
 ]
 let count = 0;
@@ -28,21 +27,13 @@ function run(rl) {
         writeFile();
     }
     else if (count !== fields.length) {
-        let _answer
         rl.question(fields[count].description + ": ", answer => {
             if (answer.trim().length == 0) {
-              _answer = fields[count].def;
+              obj[fields[count].name] = fields[count].def;
             }
-            if (count === 1 && answer.trim().toLowerCase() === "auto") {
-              let mimeType = mime.lookup(answer);
-              if (mimeType === false) {
-                console.log(_answer);
-                console.log('Cannot find mime-type from file in path, please make sure the src goes to a file used for an icon.');
-                process.exit();
-              }
-              _answer = mimeType;
+            else {
+              obj[fields[count].name] = answer;
             }
-            obj[fields[count].name] = _answer;
             console.log(obj);
             console.log("\t");
             count++;
