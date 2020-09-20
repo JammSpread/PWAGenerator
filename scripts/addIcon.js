@@ -5,15 +5,15 @@ const fields = [
   
 ]
 let count = 0;
+let manifest;
+fs.readFile(dir + "/manifest.webmanifest", (error, data) => {
+  if (error) {console.log(error); process.exit()}
+  else {
+    manifest = JSON.parse(data.toString());
+  }
+});
 
 function run(rl) {
-  let manifest = 0;
-  fs.readFile(dir + "/manifest.webmanifest", (error, data) => {
-    if (error) {console.log(error); process.exit()}
-    else {
-      manifest = JSON.parse(data.toString());
-    }
-  });
   if (count === fields.length) {
     rl.close();
     console.log(colors.yellow("Done!"));
