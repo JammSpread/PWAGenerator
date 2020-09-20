@@ -7,7 +7,6 @@ const fields = [
     new manifestJS.field("type", "type (Type of icon file, either mime or some extensions, default: png)", "png"),
     new manifestJS.field("sizes", "sizes (Size of icon, recommended: 192x192, default: 192x192)", "192x192")
 ]
-let obj = {};
 let count = 0;
 let manifest;
 fs.readFile(dir + "/manifest.webmanifest", (error, data) => {
@@ -24,7 +23,10 @@ function run(rl) {
     }
     else if (count !== fields.length) {
         rl.question(fields[count].description + ": ", answer => {
-            
+            if (manifest.icons.length === 0) {
+                manifest.icons = [];
+            }
+            manifest.icons[manifest.icons.length][fields[count]].name = answer;
             console.log("\t");
             count++;
             run(rl);
