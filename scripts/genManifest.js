@@ -29,7 +29,7 @@ function run(rl) {
         rl.close();
         writeFile();
     }
-    else {
+    else if (count !== fields.length) {
         rl.question(fields[count].description + ": ", answer => {
             if (answer.toString().toLowerCase() === "true") {
                 obj[fields[count].name] = true;

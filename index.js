@@ -12,6 +12,7 @@ const addIcon = require('./scripts/addIcon.js');
 const statement = `Do you want to create a manifest or a service worker?
 (1) Manifest
 (2) Service Worker
+(3) Add Icon to Manifest
 Default : 1
 > `;
 
@@ -23,7 +24,7 @@ rl.question(statement, answer => {
         generateSW.run(rl);
     }
     else if (answer === "3") {
-        addIcon.run();
+        addIcon.run(rl);
     }
     else {
         generateManifest.run(rl);
