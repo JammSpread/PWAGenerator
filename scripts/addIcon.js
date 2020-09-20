@@ -9,6 +9,7 @@ const fields = [
 ]
 let count = 0;
 let manifest;
+let obj = {};
 fs.readFile(dir + "/manifest.webmanifest", (error, data) => {
       if (error) {console.log(error); process.exit()}
       else {
@@ -17,16 +18,23 @@ fs.readFile(dir + "/manifest.webmanifest", (error, data) => {
 });
 
 function run(rl) {
+    if (!('icons' in manifest)) {
+      manifest['icons'] = [];
+    }
     if (count === fields.length) {
+        manifest['icons'].push(obj);
         rl.close();
         writeFile();
     }
     else if (count !== fields.length) {
         rl.question(fields[count].description + ": ", answer => {
             if (answer.trim().length == 0) {
-              manifest[fields[count].name] = fields[count].def];
-              console.log(manifest);
+              obj[fields[count].name] = fields[count].def;
             }
+            else {
+              obj[fields[count].name] = answer;
+            }
+            console.log(obj);
             console.log("\t");
             count++;
             run(rl);

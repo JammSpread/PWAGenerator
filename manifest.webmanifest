@@ -4,5 +4,17 @@
 	"description": "A progressive web app.",
 	"display": "browser",
 	"start_url": "/",
-	"prefer_related_applications": false
+	"prefer_related_applications": false,
+	"icons": [
+		{
+			"src": "src/img/image.png",
+			"type": "png",
+			"sizes": "192x192"
+		},
+		{
+			"src": "Hello",
+			"type": "my friends",
+			"sizes": "256x256"
+		}
+	]
 }
