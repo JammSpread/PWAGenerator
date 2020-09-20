@@ -1,6 +1,6 @@
 const fs = require('fs');
 const colors = require('colors/safe');
-const manifestJS = require('manifestJS');
+const manifestJS = require('./manifest.js');
 const dir = process.cwd();
 
 function colorOption(str) {
@@ -21,7 +21,7 @@ let count = 0;
 function run(rl) {
     if (count === fields.length) {
         rl.close();
-        manifestJS.writeFile(fs, obj, dir, colors);
+        writeFile();
     }
     else if (count !== fields.length) {
         rl.question(fields[count].description + ": ", answer => {
@@ -42,6 +42,16 @@ function run(rl) {
             run(rl);
         });
     }
+}
+
+function writeFile() {
+    fs.writeFile(dir + "/manifest.webmanifest", JSON.stringify(obj, null, '\t'), function(error) {
+        if (error) console.log("ERROR : " + error);
+        else {
+            console.log(colors.yellow("Done!"));
+            console.log(colors.bgBlack(`Add to HTML Head: \n<link rel="manifest" href="${dir + "/manifest.webmanifest"}">`));
+        }
+    });
 }
 
 module.exports = {
