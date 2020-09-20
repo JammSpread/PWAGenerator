@@ -43,6 +43,7 @@ function run(rl) {
             else {
                 obj[fields[count].name] = answer;
             }
+            console.log("\n");
             count++;
             run(rl);
         });

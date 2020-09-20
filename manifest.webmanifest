@@ -2,7 +2,7 @@
 	"name": "App",
 	"short_name": "App",
 	"description": "A progressive web app.",
-	"display": "fullscreen",
+	"display": "browser",
 	"start_url": "/",
 	"prefer_related_applications": false
 }
