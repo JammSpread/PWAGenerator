@@ -31,8 +31,27 @@ function run(rl) {
         rl.question(fields[count].description + ": ", answer => {
             if (answer.trim().length == 0) {
               obj[fields[count].name] = fields[count].def;
-              answer = fields[count].def;
-              checkMime(answer);
+              if (count === 1 && answer.toLowerCase().trim() === "auto") {
+              let detectedMime = mime.lookup(obj['src']);
+              if (detectedMime === false) {
+                console.log('Unable to detect mime type from src path, please make sure your src leads to a valid icon file.');
+              }
+              else {
+                obj[fields[count].name] = detectedMime;
+              }
+            }
+            }
+            else {
+              obj[fields[count].name] = answer;
+              if (count === 1 && answer.toLowerCase().trim() === "auto") {
+              let detectedMime = mime.lookup(obj['src']);
+              if (detectedMime === false) {
+                console.log('Unable to detect mime type from src path, please make sure your src leads to a valid icon file.');
+              }
+              else {
+                obj[fields[count].name] = detectedMime;
+              }
+            }
             }
             console.log(obj);
             console.log("\t");
@@ -40,18 +59,6 @@ function run(rl) {
             run(rl);
         });
     }
-}
-
-function checkMime(path) {
-  if (count === 1 && path.toLowerCase().trim() === "auto") {
-    let detectedMime = mime.lookup(obj['src']);
-    if (detectedMime === false) {
-      console.log('Unable to detect mime type from src path, please make sure your src leads to a valid icon file.');
-    }
-    else {
-      obj[fields[count].name] = detectedMime;
-    }
-  }
 }
 
 
