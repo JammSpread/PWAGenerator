@@ -1,3 +1,2 @@
-# Get Started!
-
-Add files and start typing 🎉
+# PWAGenerator
+Generate an installable PWA with these node scripts.
