@@ -23,16 +23,13 @@ function run(rl) {
     }
     else if (count !== fields.length) {
         rl.question(fields[count].description + ": ", answer => {
-            if (manifest.icons.length === 0) {
-                manifest.icons = [];
-            }
-            manifest.icons[manifest.icons.length][fields[count]].name = answer;
+            manifest['icons'][manifest['icons'].length] = "hi";
             console.log("\t");
             count++;
             run(rl);
         });
     }
-}
+
 
 function writeFile() {
     fs.writeFile(dir + "/manifest.webmanifest", JSON.stringify(manifest, null, '\t'), function(error) {
