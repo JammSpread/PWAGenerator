@@ -22,6 +22,9 @@ function run(rl) {
         writeFile();
     }
     else if (count !== fields.length) {
+        if (manifest['icons'] === null) {
+          manifest['icons'] = ['hi'];
+        }
         rl.question(fields[count].description + ": ", answer => {
             manifest['icons'][manifest['icons'].length] = "hi";
             console.log("\t");
@@ -29,6 +32,7 @@ function run(rl) {
             run(rl);
         });
     }
+}
 
 
 function writeFile() {
