@@ -30,20 +30,18 @@ function run(rl) {
     else if (count !== fields.length) {
         rl.question(fields[count].description + ": ", answer => {
             if (answer.trim().length == 0) {
-              obj[fields[count].name] = fields[count].def;
               answer = fields[count].def;
-            }
-            else {
-              obj[fields[count].name] = answer;
             }
             if (count === 1 && answer.trim().toLowerCase() === "auto") {
               let mimeType = mime.lookup(answer);
               if (mimeType === false) {
+                console.log(answer);
                 console.log('Cannot find mime-type from file in path, please make sure the src goes to a file used for an icon.');
                 process.exit();
               }
-              obj[fields[count].name] = mimeType;
+              answer = mimeType;
             }
+            obj[fields[count].name] = answer;
             console.log(obj);
             console.log("\t");
             count++;
