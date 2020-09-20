@@ -19,10 +19,13 @@ fs.readFile(dir + "/manifest.webmanifest", (error, data) => {
 
 function run(rl) {
   if (count === fields.length) {
-    rl.close();
+      rl.close();
     writeFile();
   }
   else if (count !== fields.length) {
+    rl.question(fields[count].description + ": ", answer => {
+      console.log(answer);
+    });
     count++;
     run(rl);
   }
