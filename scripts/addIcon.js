@@ -3,32 +3,33 @@ const fs = require('fs');
 const manifestJS = require('./manifest.js');
 const dir = process.cwd();
 const fields = [
-  new manifestJS.field("src", "src (Source path to image, default: src/img/image.png)", "src/img/image.png"),
-  new manifestJS.field("type", "type (Type of icon file, either mime or some extensions, default: png)", "png"),
-  new manifestJS.field("sizes", "sizes (Size of icon, recommended: 192x192, default: 192x192)", "192x192")
+    new manifestJS.field("src", "src (Source path to image, default: src/img/image.png)", "src/img/image.png"),
+    new manifestJS.field("type", "type (Type of icon file, either mime or some extensions, default: png)", "png"),
+    new manifestJS.field("sizes", "sizes (Size of icon, recommended: 192x192, default: 192x192)", "192x192")
 ]
 let obj = {};
 let count = 0;
 let manifest;
 fs.readFile(dir + "/manifest.webmanifest", (error, data) => {
-  if (error) {console.log(error); process.exit()}
-  else {
-    manifest = JSON.parse(data.toString());
-  }
+      if (error) {console.log(error); process.exit()}
+      else {
+        manifest = JSON.parse(data.toString());
+      }
 });
 
 function run(rl) {
-  if (count === fields.length) {
-      rl.close();
-    writeFile();
-  }
-  else if (count !== fields.length) {
-    rl.question(fields[count].description + ": ", answer => {
-      console.log(answer);
-    });
-    count++;
-    run(rl);
-  }
+    if (count === fields.length) {
+        rl.close();
+        writeFile();
+    }
+    else if (count !== fields.length) {
+        rl.question(fields[count].description + ": ", answer => {
+            
+            console.log("\t");
+            count++;
+            run(rl);
+        });
+    }
 }
 
 function writeFile() {
