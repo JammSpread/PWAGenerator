@@ -20,6 +20,11 @@
 			"src": "src/img/image.png",
 			"type": "png",
 			"sizes": "192x192"
+		},
+		{
+			"src": "src/img/image.png",
+			"type": "auto",
+			"sizes": "192x192"
 		}
 	]
 }

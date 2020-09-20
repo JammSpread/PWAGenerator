@@ -28,20 +28,21 @@ function run(rl) {
         writeFile();
     }
     else if (count !== fields.length) {
+        let _answer
         rl.question(fields[count].description + ": ", answer => {
             if (answer.trim().length == 0) {
-              answer = fields[count].def;
+              _answer = fields[count].def;
             }
             if (count === 1 && answer.trim().toLowerCase() === "auto") {
               let mimeType = mime.lookup(answer);
               if (mimeType === false) {
-                console.log(answer);
+                console.log(_answer);
                 console.log('Cannot find mime-type from file in path, please make sure the src goes to a file used for an icon.');
                 process.exit();
               }
-              answer = mimeType;
+              _answer = mimeType;
             }
-            obj[fields[count].name] = answer;
+            obj[fields[count].name] = _answer;
             console.log(obj);
             console.log("\t");
             count++;
