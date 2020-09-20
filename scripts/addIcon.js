@@ -23,8 +23,9 @@ function run(rl) {
     }
     else if (count !== fields.length) {
         rl.question(fields[count].description + ": ", answer => {
-            if (answer.length < 1) {
-              manifest[fields[count].name] = manifest[fields[count].def];
+            if (answer.trim().length == 0) {
+              manifest[fields[count].name] = fields[count].def];
+              console.log(manifest);
             }
             console.log("\t");
             count++;
