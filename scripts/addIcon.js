@@ -46,7 +46,6 @@ function run(rl) {
                 obj[fields[count].name] = detectedMime;
               }
             }
-            console.log(obj);
             console.log("\t");
             count++;
             run(rl);
