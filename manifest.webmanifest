@@ -1,5 +1,5 @@
 {
-	"name": "1",
+	"name": "App",
 	"short_name": "App",
 	"description": "A progressive web app.",
 	"display": "browser",
@@ -8,33 +8,9 @@
 	"icons": [
 		{
 			"src": "src/img/image.png",
-			"type": "png",
+			"type": "image/png",
 			"sizes": "192x192"
-		},
-		{
-			"src": "Hello",
-			"type": "my friends",
-			"sizes": "256x256"
-		},
-		{
-			"src": "src/img/image.png",
-			"type": "png",
-			"sizes": "192x192"
-		},
-		{
-			"src": "src/img/image.png",
-			"type": "auto",
-			"sizes": "192x192"
-		},
-		{
-			"src": "src/img/image.png",
-			"type": "auto",
-			"sizes": "auto"
-		},
-		{
-			"src": "src/img/image.png",
-			"type": "yes",
-			"sizes": "yes"
 		}
-	]
+	],
+  "bruh": "hey"
 }

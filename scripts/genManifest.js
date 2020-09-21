@@ -18,6 +18,10 @@ const obj = {
 };
 let count = 0;
 
+fs.readFile(dir + "/manifest.webmanifest", (error, data) => {
+  obj = JSON.parse(data.toString());
+});
+
 function run(rl) {
     if (count === fields.length) {
         rl.close();
@@ -50,6 +54,7 @@ function writeFile() {
         else {
             console.log(colors.yellow("Done!"));
             console.log(colors.bgBlack(`Add to HTML Head: \n<link rel="manifest" href="${dir + "/manifest.webmanifest"}">`));
+            console.log(colors.blue('Installable PWAs need to have at least one icon, please add icons by rerunning this script.'));
         }
     });
 }

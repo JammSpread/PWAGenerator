@@ -5,7 +5,7 @@ const manifestJS = require('./manifest.js');
 const dir = process.cwd();
 const fields = [
     new manifestJS.field("src", "src (Source path to image, default: src/img/image.png)", "src/img/image.png"),
-    new manifestJS.field("type", "type (Type of icon file, either mime or some extensions, default: png)", "png"),
+    new manifestJS.field("type", "type (Type of icon file, either mime-types or auto for auto detection based on the path from src, default: auto)", "auto"),
     new manifestJS.field("sizes", "sizes (Size of icon, recommended: 192x192, default: 192x192)", "192x192")
 ]
 let count = 0;
@@ -31,6 +31,7 @@ function run(rl) {
         rl.question(fields[count].description + ": ", answer => {
             if (answer.trim().length == 0) {
               obj[fields[count].name] = fields[count].def;
+              answer = fields[count].def;
             }
             else {
               obj[fields[count].name] = answer;
