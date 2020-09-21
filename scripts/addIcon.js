@@ -1,5 +1,6 @@
 const colors = require('colors/safe');
 const fs = require('fs');
+const mime = require('mime-types');
 const manifestJS = require('./manifest.js');
 const dir = process.cwd();
 const fields = [
@@ -33,6 +34,16 @@ function run(rl) {
             }
             else {
               obj[fields[count].name] = answer;
+            }
+            if (answer.trim().toLowerCase() === "auto" && count === 1) {
+              let detectedMime = mime.lookup(obj['src']);
+              if (detectedMime === false) {
+                console.log(detectedMime);
+                process.exit();
+              }
+              else {
+                obj[fields[count].name] = detectedMime;
+              }
             }
             console.log(obj);
             console.log("\t");
