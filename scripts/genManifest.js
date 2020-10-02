@@ -19,7 +19,12 @@ const obj = {
 let count = 0;
 
 fs.readFile(dir + "/manifest.webmanifest", (error, data) => {
-  obj = JSON.parse(data.toString());
+    if (!error) {
+        try {
+            obj = JSON.parse(data.toString());
+        }
+        catch(err) {}
+    }
 });
 
 function run(rl) {

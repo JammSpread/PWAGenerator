@@ -14,7 +14,10 @@ let obj = {};
 fs.readFile(dir + "/manifest.webmanifest", (error, data) => {
       if (error) {console.log(error); process.exit()}
       else {
-        manifest = JSON.parse(data.toString());
+          try {
+            manifest = JSON.parse(data.toString());
+          }
+          catch(err) {}
       }
 });
 
