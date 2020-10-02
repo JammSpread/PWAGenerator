@@ -3,10 +3,14 @@ const fs = require('fs');
 const mime = require('mime-types');
 const manifestJS = require('./manifest.js');
 const dir = process.cwd();
+function colorOption(str) {
+  return colors.bgWhite(colors.black(str));
+}
 const fields = [
     new manifestJS.field("src", "src (Source path to image, default: src/img/image.png)", "src/img/image.png"),
     new manifestJS.field("type", "type (Type of icon file, either mime-types or auto for auto detection based on the path from src, default: auto)", "auto"),
-    new manifestJS.field("sizes", "sizes (Size of icon, recommended: 192x192, default: 192x192)", "192x192")
+    new manifestJS.field("sizes", "sizes (Size of icon, recommended: 192x192, default: 192x192)", "192x192"),
+    new manifestJS.field("purpose", `purpose (style of icon, either ${colorOption("any")} or ${colorOption("maskable")}, default: any)`, "any")
 ]
 let count = 0;
 let manifest;
