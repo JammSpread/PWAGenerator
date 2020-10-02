@@ -12,6 +12,8 @@ const fields = [
     new manifestJS.field("description", "description (description of the web app, default: A progressive web app.)", "A progressive web app."),
     new manifestJS.field("display", `display (${colorOption("fullscreen")}, ${colorOption("standalone")}, ${colorOption("minimal_ui")} or ${colorOption("browser")}, default: ${colorOption("browser")})`, "browser"),
     new manifestJS.field("start_url", "start_url (starting path, default: /)", "/"),
+    new manifestJS.field("theme_color", "theme_color (address bar color, has to be color, default: #ffffff)", "/"),
+    new manifestJS.field("background_color", "background_color (splashscreen background when loading, has to be color, default: #ffffff)", "/"),
     new manifestJS.field("prefer_related_applications", `prefer_related_applications (${colorOption("true")} or ${colorOption("false")}, needs to be false to be installable, default: ${colorOption("false")})`, false)
 ];
 const obj = {
